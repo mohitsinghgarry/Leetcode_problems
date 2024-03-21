@@ -11,31 +11,17 @@
 class Solution {
     public ListNode partition(ListNode head, int x) {
         if(head == null) return null;
-        ArrayList<Integer> arr = new ArrayList<>();
-        smaller(head , arr,x);
-        ListNode temp = head;
-        while(temp!=null){
-            if(temp.val>=x) arr.add(temp.val);
-            temp = temp.next;
+        ListNode small = new ListNode();
+        ListNode res = small;
+        ListNode greater = new ListNode();
+        ListNode res_new = greater;
+        while(head!=null){
+            if(head.val<x){small.next = head; small = small.next;}
+            else {greater.next = head; greater = greater.next;}
+            head = head.next;
         }
-        ListNode res =arrayListToListNode(arr);
-        return res;
+        greater.next = null;
+        small.next = res_new.next;
+        return res.next;
     }
-    public void smaller(ListNode head , ArrayList<Integer>arr, int x){
-        ListNode temp = head;
-        while(temp!=null){
-            if(temp.val<x) arr.add(temp.val);
-            temp = temp.next;
-        }
-    }
-    public ListNode arrayListToListNode(ArrayList<Integer> arr) {
-    if (arr.isEmpty()) return null;
-    ListNode dummyNode = new ListNode(0);
-    ListNode currentNode = dummyNode;
-    for (int num : arr) {
-        currentNode.next = new ListNode(num);
-        currentNode = currentNode.next;
-    }
-    return dummyNode.next;
-}
 }
