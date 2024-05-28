@@ -11,6 +11,6 @@ class Solution {
         }
         max = Math.max(max, str.length());
        }
-    return max;
+       return max;
     }
 }
