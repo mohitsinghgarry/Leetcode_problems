@@ -4,7 +4,7 @@ class Solution {
         Map<Character , Integer> map = new HashMap<>();
         int l = 0 , len = s.length(),r = 0,max = 0;
         while(r!=len){
-            if(!map.containsKey(s.charAt(r))){
+            if(!map.containsKey(s.charAt(r)) || map.get(s.charAt(r)) < l){
                 map.put(s.charAt(r), r);
                 max = Math.max(max, r-l+1);
             }
