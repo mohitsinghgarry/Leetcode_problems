@@ -1,31 +1,22 @@
 class Solution {
     public int rangeSum(int[] arr, int n, int left, int right) {
         //BRUTE FORCE
-    int[] prefixSum = new int[n + 1];
-    int[] subarraySums = new int[n * (n + 1) / 2];
-    int index = 0;
-
-    // Calculate prefix sums
-    for (int i = 0; i < n; i++) {
-        prefixSum[i + 1] = prefixSum[i] + arr[i];
-    }
-
-    // Calculate all subarray sums using prefix sums
-    for (int i = 0; i < n; i++) {
-        for (int j = i; j < n; j++) {
-            subarraySums[index++] = prefixSum[j + 1] - prefixSum[i];
+        int[] res = new int[n * (n+1) /2];
+        int total = 0;
+        int l = 0;
+         for (int i = 0; i < arr.length; i++) {
+            for (int j = i; j < arr.length; j++) {
+                   int sum = 0;
+                 for (int k = i; k <= j; k++) {
+                    sum+= arr[k];
+            }
+            res[l] = sum;
+            l++;
         }
     }
-
-    // Sort the subarray sums
-    Arrays.sort(subarraySums);
-
-    // Calculate the sum of the specified range
-    int result = 0;
-    for (int i = left - 1; i < right; i++) {
-        result += subarraySums[i];
-    }
-
-    return result;
+      l = 0;
+        Arrays.sort(res);
+        for(int i = left-1;i<right;i++) l=( l + res[i])%(1000000000 +7);
+    return l%(1000000000 +7);
     }
 }
