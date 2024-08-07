@@ -10,29 +10,24 @@
  */
 class Solution {
     public ListNode reverseList(ListNode head) {
-        // BRUTE FORCE APPROACH
-        ArrayList<Integer> arr = new ArrayList<Integer>();
-        ArrayList<Integer> res = new ArrayList<>();
-        arr(head ,arr);
-        for(int i =arr.size()-1 ;i>=0;i--) res.add(arr.get(i));
-        ListNode temp = arrayListToListNode(res);
-        return temp;
-
-    }
-    public ListNode arrayListToListNode(ArrayList<Integer> arr) {
-    if (arr.isEmpty()) return null;
-    ListNode dummyNode = new ListNode(0);
-    ListNode currentNode = dummyNode;
-    for (int num : arr) {
-        currentNode.next = new ListNode(num);
-        currentNode = currentNode.next;
-    }
-    return dummyNode.next;
-}
-    public void arr(ListNode head, ArrayList<Integer> arr){
-        while(head!=null){
-            arr.add(head.val);
-            head= head.next;
+        // BRUTE FORCE APPROACH USING ARRAYLIST
+        ArrayList<Integer> arr = new ArrayList<>();
+        ListNode temp = head;
+        while(temp!=null){
+            arr.add(temp.val);
+            temp = temp.next;
         }
+       Collections.sort(arr, Collections.reverseOrder());
+            ListNode temp_new = new ListNode();
+        if(arr.size()!= 0) temp_new.val = arr.get(0);
+        else return null;
+        ListNode temp_2 = temp_new;
+        for(int i =1 ;i<arr.size();i++){
+                ListNode temp_final = new ListNode(arr.get(i));
+                temp_new.next = temp_final;
+                temp_new = temp_final;
+        }
+        head = temp_2;
+        return head;
     }
 }
