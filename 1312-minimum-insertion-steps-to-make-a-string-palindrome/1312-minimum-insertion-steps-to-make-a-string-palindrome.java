@@ -10,7 +10,7 @@ class Solution {
     public int solve(String s , int i , int j, int[][] dp, int m , int n){
         if(i>=j) return 0;
         if(dp[i][j] != -1) return dp[i][j];
-        if(s.charAt(i) == s.charAt(j)) return dp[m][n] = solve(s , i+1 , j-1, dp, m , n);
-        return dp[m][n] = 1 + Math.min(solve(s , i+1 , j,dp,m,n) , solve(s , i , j-1,dp , m , n));
+        if(s.charAt(i) == s.charAt(j)) return dp[i][j] = solve(s , i+1 , j-1, dp, m , n);
+        return dp[i][j] = 1 + Math.min(solve(s , i+1 , j,dp,m,n) , solve(s , i , j-1,dp , m , n));
     }
 }
