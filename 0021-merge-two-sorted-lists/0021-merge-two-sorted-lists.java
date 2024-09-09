@@ -10,24 +10,32 @@
  */
 class Solution {
     public ListNode mergeTwoLists(ListNode list1, ListNode list2) {
+        // BRUTE FORCE APPROACH USING EXTRA SPACES
+        ArrayList<Integer> arr = new ArrayList<>();
+        ListNode temp1 = list1;
+        ListNode temp2 = list2;
+        while(temp1!=null){
+            arr.add(temp1.val);
+            temp1=temp1.next;
+        }
+        while(temp2!=null){
+            arr.add(temp2.val);
+            temp2=temp2.next;
+        }
+        Collections.sort(arr);
+        ListNode head= arraytolinkedlist(arr);
+        return head.next;
         
-        ListNode dummy = new ListNode();
-        ListNode tail = dummy;
-        while (list1 != null && list2 != null) {
-            if (list1.val < list2.val) {
-                tail.next = list1;
-                list1 = list1.next;
-            } else {
-                tail.next = list2;
-                list2 = list2.next;
-            }
-            tail = tail.next;
+    }
+    public ListNode arraytolinkedlist(ArrayList<Integer> arr){
+        ListNode head = new ListNode(-1);
+        ListNode temp = head;
+        for(int i = 0;i<arr.size();i++){
+            ListNode temp2 = new ListNode(arr.get(i));
+            temp.next= temp2;
+            temp = temp2;
+           
         }
-        if (list1 != null) {
-            tail.next = list1;
-        } else if (list2 != null) {
-            tail.next = list2;
-        }
-        return dummy.next;
+        return head;
     }
 }
