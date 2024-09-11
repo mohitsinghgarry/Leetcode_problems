@@ -11,6 +11,8 @@
  */
 public class Solution {
     public ListNode getIntersectionNode(ListNode headA, ListNode headB) {
+
+        // BRUTE FORCE SOLUTION
         ListNode temp1 = headA;
         ListNode temp2 = headB;
        while(temp1 != null){
