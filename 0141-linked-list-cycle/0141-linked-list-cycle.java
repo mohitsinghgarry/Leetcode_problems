@@ -10,16 +10,13 @@
  * }
  */
 public class Solution {
-    //OPTIMISED APPROACH USING TWO POINTERES
     public boolean hasCycle(ListNode head) {
         if(head == null) return false;
-        ListNode fast = head;
         ListNode slow = head;
-        // if(fast.next == null) return false;
-        while(fast!=null && fast.next!=null){
+        ListNode fast = head;
+        while(fast != null && fast.next !=null){
             fast = fast.next.next;
             slow = slow.next;
-
             if(slow == fast) return true;
         }
         return false;
