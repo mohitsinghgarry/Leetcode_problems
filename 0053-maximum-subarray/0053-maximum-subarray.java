@@ -1,20 +1,12 @@
 class Solution {
     public int maxSubArray(int[] nums) {
+        //KADANE'S ALGORITHM
         int sum = 0;
-        for(int i = 0;i<nums.length;i++) sum += nums[i];
-        int max = sum;
-        int start = 0;
-        int end = nums.length-1;
-        while(start<end){
-             if(nums[start]<nums[end]) {
-                sum -= nums[start];
-                start++;
-                }
-             else {
-                sum-= nums[end];
-                end--;
-                }
-             max = Math.max(sum , max);
+        int max = Integer.MIN_VALUE;
+        for(int i = 0;i<nums.length;i++){
+            sum+=nums[i];
+            max = Math.max(sum ,max);
+            if(sum<0) sum = 0;
         }
         return max;
 
