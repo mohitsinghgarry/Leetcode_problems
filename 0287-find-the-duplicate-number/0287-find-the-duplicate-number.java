@@ -1,15 +1,10 @@
 class Solution {
     public int findDuplicate(int[] nums) {
-        // USING HASHSET(OPTIMISD SOLUTION)
-        HashSet<Integer> duplicate = new HashSet<>();
-        for(int num:nums){
-            if(duplicate.contains(num))
-            {
-                return num;
-            }
-            else{
-                duplicate.add(num);
-            }
+      //USING EXTRA SPACES
+      HashSet<Integer> set = new HashSet<>();
+        for(int i = 0;i<nums.length;i++){
+            if(set.contains(nums[i])) return nums[i];
+            set.add(nums[i]);
         }
         return -1;
     }
