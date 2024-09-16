@@ -10,24 +10,12 @@ class Solution {
         int time_1 =Integer.parseInt(time1.substring(0,2)) * 60 + Integer.parseInt(time1.substring(3));
         int time_2 =Integer.parseInt(time2.substring(0,2)) * 60 + Integer.parseInt(time2.substring(3));
          int time = time_2 - time_1;
-        int time_new = 1440 - time;
-        if(time < time_new){
             min = Math.min(time , min);
-        }
-        else{
-            min = Math.min(time_new , min);
-        }
         }
          int time_1 =Integer.parseInt(timePoints.get(0).substring(0,2)) * 60 + Integer.parseInt(timePoints.get(0).substring(3));
         int time_2 =Integer.parseInt(timePoints.get(size).substring(0,2)) * 60 + Integer.parseInt(timePoints.get(size).substring(3));
-        int time = time_2 - time_1;
-        int time_new = 1440 - time;
-       if(time < time_new){
-            min = Math.min(time , min);
-        }
-        else{
-            min = Math.min(time_new , min);
-        }
+        int time_new = 1440 - (time_2 - time_1);
+        min = Math.min(time_new , min);
         return min;
     }
 }
