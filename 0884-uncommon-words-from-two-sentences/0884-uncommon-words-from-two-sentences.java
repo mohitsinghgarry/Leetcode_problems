@@ -10,7 +10,7 @@ class Solution {
         for (Map.Entry<String, Integer> entry : map.entrySet()) {
             if(entry.getValue() <=1) list.add(entry.getKey());
         }
-         String[] stringArray = list.toArray(new String[0]);
-         return stringArray;
+        return list.toArray(new String[0]);
+        //  return stringArray;
     }
 }
