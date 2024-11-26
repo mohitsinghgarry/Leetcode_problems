@@ -12,7 +12,6 @@ class Solution {
         }
         }
         Arrays.sort(nums);
-        // System.out.print(Arrays.toString(result));
         return Arrays.equals(nums, result);
     }
 }
