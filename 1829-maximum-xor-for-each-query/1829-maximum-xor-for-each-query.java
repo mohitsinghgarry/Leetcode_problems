@@ -2,16 +2,12 @@ class Solution {
     public int[] getMaximumXor(int[] nums, int maximumBit) {
         //PREFIX SUM APPROACH
         int[] result = new int[nums.length];
-        int[] newresult = new int[nums.length];
+         int n = (int)(Math.pow(2, maximumBit)) -1;
         int xor = 0;
         for(int i = 0;i<nums.length;i++){
-            result[i] = xor ^ nums[i];
-            xor = result[i];
+            xor = xor ^ nums[i];
+            result[nums.length-1-i] = xor ^ n;
         }
-         int n = (int)(Math.pow(2, maximumBit)) -1;
-         for(int i = 0;i<nums.length;i++){
-            newresult[nums.length-i-1] = result[i] ^n;
-         }
-        return newresult;
+        return result;
     }
 }
