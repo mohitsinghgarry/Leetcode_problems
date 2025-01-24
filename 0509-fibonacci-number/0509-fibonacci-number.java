@@ -1,11 +1,11 @@
 class Solution {
     public int fib(int n) {
-        int temp = fibonnaci(n);
-        return temp;
+        // RECURRENCE REPLATION OF FIBONACCI ->  f(n-1) + f(n-2)
+        //BRUTE FORCE ONLY RECURSION APPLIED
+        return fibonacci(n) ;
     }
-    public int fibonnaci(int n){
-        if(n == 0) return 0;
-        if(n == 1) return 1;
-        return fibonnaci(n-1)+fibonnaci(n-2);
+    public int fibonacci(int n){
+          if(n <= 1) return n;
+        return fibonacci(n-1) + fibonacci(n-2);
     }
 }
