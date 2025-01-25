@@ -1,5 +1,5 @@
 class Solution {
-    //MEMOIZATION
+    //MEMOIZATION + EXTRA SPACE OF O(N)
     public int climbStairs(int n) {
         int[] dp = new int[n+1];
         Arrays.fill(dp , -1);
