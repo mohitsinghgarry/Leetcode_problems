@@ -11,12 +11,14 @@ class Solution {
             return;
           }
           if(sum == target){
-            res.add(new ArrayList<>(list));
+            if(!res.contains(list)) res.add(new ArrayList<>(list));
             return ;
           }
         //backtracking
         list.add(candidates[index]);
-        totalcombination(candidates , res , target , index , sum+candidates[index] , list);
+        sum +=candidates[index];
+        totalcombination(candidates , res , target , index , sum, list);
+        sum -= candidates[index];
         list.remove(list.size()-1);
         totalcombination(candidates , res , target , index + 1 , sum , list);
     }
