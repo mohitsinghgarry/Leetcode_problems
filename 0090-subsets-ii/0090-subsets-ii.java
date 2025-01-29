@@ -1,4 +1,5 @@
 class Solution {
+    //BRUTE FORCE APPROACH
     private List<List<Integer>> res =  new ArrayList<>();
     public List<List<Integer>> subsetsWithDup(int[] arr) {
         Arrays.sort(arr);
