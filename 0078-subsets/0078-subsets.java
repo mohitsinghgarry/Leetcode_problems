@@ -1,24 +1,20 @@
-import java.util.ArrayList;
-import java.util.List;
-
 class Solution {
-    private int length;
+    //USING BACKTRACKING
     public List<List<Integer>> subsets(int[] nums) {
-        //backtracking
-        length = nums.length; 
-        List<List<Integer>> lists = new ArrayList<>();
-        ArrayList<Integer> res   = new ArrayList<>();
-        findsubset(nums, 0, lists, res);
-        return lists;
+        List<List<Integer>> res = new ArrayList<>();
+        subsetfind(nums , res , new ArrayList<>(), 0);
+        return res;
     }
-    public void findsubset(int[] nums, int i, List<List<Integer>> lists, List<Integer> res){
-        if(i == length){
-            lists.add(new ArrayList<>(res)); 
+    public void subsetfind(int[] nums , List<List<Integer>> res , ArrayList<Integer> list ,int index){
+        //BASE CASE
+        if(index == nums.length){
+            res.add(new ArrayList<>(list));
             return;
         }
-        findsubset(nums , i+1 , lists, res);
-        res.add(nums[i]);
-        findsubset(nums , i+1 , lists, res);
-        res.remove(res.size() - 1); 
+        //BACKTRACKING
+        list.add(nums[index]);
+        subsetfind(nums , res , list , index+1);
+        list.remove(list.size()-1);
+        subsetfind(nums , res , list , index+1);
     }
 }
