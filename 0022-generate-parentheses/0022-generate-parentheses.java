@@ -1,4 +1,5 @@
 class Solution {
+    //BRUTE FORCE APPROACH
     public List<String> generateParenthesis(int n) {
         List<String> res = new ArrayList<>();
         generate(res , n, "");
