@@ -10,7 +10,7 @@ class Solution {
             }
         }
          for (Character key : map.keySet()) {
-              if(!key.equals(map.get(map.get(key)))) return false;
+              if(!key.equals(map.get(map.get(key))) || count !=2) return false;
         }
         return true;
         
